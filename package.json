@@ -1,0 +1,24 @@
+{
+  "name": "nappjs-api",
+  "description": "API plugin for nappjs",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nappjs/nappjs-api.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2"
+  },
+  "scripts": {
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "test": "cd test && mocha ."
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "nappjs": "^0.3.5",
+    "supertest": "^3.0.0"
+  }
+}
