@@ -18,7 +18,7 @@ const register = napp => {
 
 const start = napp => {
   const port = process.env.PORT || 3000;
-  start.listen(port, err => {
+  nappjs.locals.api.listen(port, err => {
     if (err) {
       console.log(`failed to start listening on ${port}, err: ${err}`);
     } else {
