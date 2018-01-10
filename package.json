@@ -10,15 +10,16 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "nappjs": "^0.4.3"
   },
   "scripts": {
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "test": "cd test && mocha ."
   },
   "devDependencies": {
+    "@types/node": "^9.3.0",
     "mocha": "^4.0.1",
-    "nappjs": "^0.3.5",
     "supertest": "^3.0.0"
   }
 }

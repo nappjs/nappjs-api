@@ -1,4 +1,4 @@
-const napp = require("nappjs")();
+const napp = require("nappjs").NewNappJS();
 const path = require("path");
 const supertest = require("supertest");
 
