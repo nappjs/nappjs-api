@@ -8,10 +8,11 @@
     "url": "https://github.com/nappjs/nappjs-api.git"
   },
   "dependencies": {
+    "@types/express": "^4.11.0",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "nappjs": "^0.4.3"
+    "nappjs": "^0.5.0"
   },
   "scripts": {
     "patch-release": "npm version patch && npm publish && git push --follow-tags",

@@ -45,36 +45,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var nappjs_1 = require("nappjs");
-var express = require("express");
-var cors = require("cors");
 var bodyParser = require("body-parser");
+var cors = require("cors");
+var express = require("express");
+var nappjs_1 = require("nappjs");
 var NappJSApi = (function (_super) {
     __extends(NappJSApi, _super);
     function NappJSApi() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        var app = express();
+        app.use(bodyParser.json());
+        app.use(cors({
+            allowedHeaders: "Content-Range,Content-Type,Range,Authorization",
+            exposedHeaders: "Content-Range"
+        }));
+        _this.app = app;
+        return _this;
     }
-    NappJSApi.prototype.load = function (napp) {
-        return __awaiter(this, void 0, void 0, function () {
-            var app;
-            return __generator(this, function (_a) {
-                app = express();
-                app.use(bodyParser.json());
-                app.use(cors({
-                    allowedHeaders: "Content-Range,Content-Type,Range,Authorization",
-                    exposedHeaders: "Content-Range"
-                }));
-                napp.locals.api = app;
-                return [2];
-            });
-        });
-    };
     NappJSApi.prototype.start = function (napp) {
         return __awaiter(this, void 0, void 0, function () {
             var port;
             return __generator(this, function (_a) {
                 port = process.env.PORT || 80;
-                napp.locals.api.listen(port, function (err) {
+                this.app.listen(port, function (err) {
                     if (err) {
                         console.log("failed to start listening on " + port + ", err: " + err);
                     }
@@ -87,6 +80,6 @@ var NappJSApi = (function (_super) {
         });
     };
     return NappJSApi;
-}(nappjs_1.NappJSModule));
+}(nappjs_1.NappJSService));
 exports.default = NappJSApi;
 //# sourceMappingURL=index.js.map

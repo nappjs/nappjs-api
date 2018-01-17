@@ -8,7 +8,8 @@ describe("api", () => {
   before(async () => {
     napp.addMiddleware("test", path.join(__dirname, "../index"));
     await napp.load();
-    test = supertest(napp.locals.api);
+    let middleware = napp.getService("test");
+    test = supertest(middleware.app);
   });
 
   it("should create endpoint", () => {

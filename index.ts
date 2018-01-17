@@ -1,11 +1,15 @@
-import { NappJS, NappJSModule } from 'nappjs';
+import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
+import * as express from 'express';
+import * as core from 'express-serve-static-core';
+import { NappJS, NappJSService } from 'nappjs';
 
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+export default class NappJSApi extends NappJSService {
+  public app: core.Express;
 
-export default class NappJSApi extends NappJSModule {
-  async load(napp: NappJS) {
+  constructor() {
+    super();
+
     const app = express();
 
     app.use(bodyParser.json());
@@ -16,12 +20,12 @@ export default class NappJSApi extends NappJSModule {
       })
     );
 
-    napp.locals.api = app;
+    this.app = app;
   }
 
-  async start(napp: NappJS){
+  async start(napp: NappJS) {
     const port = process.env.PORT || 80;
-    napp.locals.api.listen(port, err => {
+    this.app.listen(port, err => {
       if (err) {
         console.log(`failed to start listening on ${port}, err: ${err}`);
       } else {
