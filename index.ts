@@ -15,12 +15,23 @@ export default class NappJSApi extends NappJSService {
     app.use(bodyParser.json());
     app.use(
       cors({
-        allowedHeaders: "Content-Range,Content-Type,Range,Authorization",
-        exposedHeaders: "Content-Range"
+        allowedHeaders: 'Content-Range,Content-Type,Range,Authorization',
+        exposedHeaders: 'Content-Range'
       })
     );
 
     this.app = app;
+  }
+
+  async load(napp: NappJS) {
+    this.app.get('/healthcheck', async (req, res, next) => {
+      try {
+        let data = await napp.getHealthCheckData();
+        res.send(data);
+      } catch (e) {
+        next(e);
+      }
+    });
   }
 
   async start(napp: NappJS) {

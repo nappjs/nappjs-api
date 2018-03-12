@@ -14,7 +14,7 @@
     "express": "^4.16.2"
   },
   "peerDependencies": {
-    "nappjs": "^0.5.4"
+    "nappjs": "^0.5.8"
   },
   "scripts": {
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/node": "^9.3.0",
     "mocha": "^4.0.1",
-    "nappjs": "^0.5.4",
+    "nappjs": "^0.5.8",
     "supertest": "^3.0.0"
   }
 }
